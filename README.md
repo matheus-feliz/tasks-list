@@ -1,4 +1,4 @@
-# check-list
+# tasks-list
 
 ## Project setup
 ```
@@ -22,6 +22,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-# check-list
-# check-list
-# tasks-list

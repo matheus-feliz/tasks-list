@@ -21,7 +21,6 @@ export default ({
                 }
         },
         deleteTask(id,item, tasks) {
-            console.log(id,item,tasks)
             for (let i = 0; i < tasks.length; i++) {
                 if (id == tasks[i].id) {
                     tasks.splice(i, 1);

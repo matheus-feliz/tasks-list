@@ -30,14 +30,11 @@ export default createStore({
   },
   actions: {
     setList(context,item){
-      console.log(item)
       let list= JSON.parse(localStorage.getItem(`${item.getList}`));
      if(list != null && typeof list === 'object'){
        if(list.length >0){
-        console.log(item.setCommit, list.length)
         context.commit(`${item.setCommit}`,list)
        }else{
-        console.log(item.setCommit, null)
         context.commit(`${item.setCommit}`,null)
        }
      }

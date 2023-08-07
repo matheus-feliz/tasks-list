@@ -63,8 +63,9 @@ export default ({
 
 .decoracao {
     list-style: none;
-    width: 100%;
-    margin-left: -5.1%;
+    width: 80%;
+    margin-left: 5%;
+
 }
 
 .center {

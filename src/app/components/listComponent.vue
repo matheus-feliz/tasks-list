@@ -19,34 +19,21 @@ export default ({
     },
     props: ['task', 'screen'],
     methods: {
-        add(id, status, tasks) {
+        add(id, status) {
             let moveTask = {
-                nextStatus: '',
-                getTasks: '',
-                setTasks: '',
-                setNexTasks: '',
+                nextStatus:  status == '' ? 'Interrupted' : status == 'open' ? 'concluded' : 'open',
+                getTasks: status == 'open' ? 'tasksConcluded' : status == '' ? 'tasksInterrupted': 'tasks',
+                setTasks: status == '' || status=='open' ? 'tasks': status == 'Interrupted' ? 'tasksInterrupted' : 'tasksConcluded',
+                setNexTasks: status == 'open' ? 'tasksConcluded' : status == '' ? 'tasksInterrupted': 'tasks',
+                status: status == "" ? 'Interrupted': status
             }
-            if (status == 'open' || status == '') {
-                moveTask.nextStatus = status == '' ? 'Interrupted' : 'concluded'
-                moveTask.getTasks = status == 'open' ? 'tasksConcluded' : 'tasksInterrupted'
-                moveTask.setTasks = 'tasks'
-                moveTask.setNexTasks = status == 'open' ? 'tasksConcluded' : 'tasksInterrupted'
-
-            } else if (status == 'concluded' || status == 'Interrupted') {
-                moveTask.nextStatus = 'open'
-                moveTask.getTasks = "tasks"
-                moveTask.setTasks = status == 'concluded' ? 'tasksConcluded' : 'tasksInterrupted'
-                moveTask.setNexTasks = 'tasks'
-            }
-            this.$emit('addTasksStatus', id, moveTask, tasks)
-        }, deleteStatus(id, status, tasks) {
+            this.$emit('addTasksStatus', id, moveTask)
+        }, deleteStatus(id, status) {
             let item = {
-                getList: '',
-                setCommit: ''
+                getList: status == 'concluded' ? 'tasksConcluded' : status == 'open' ? 'tasks' : 'tasksInterrupted',
+                setCommit: status == 'concluded' ? 'setListTasksConcluded' : status == 'open' ? 'setListTasksOpen' : 'setListTasksInterrupted'
             }
-            item.getList = status == 'concluded' ? 'tasksConcluded' : status == 'open' ? 'tasks' : 'tasksInterrupted'
-            item.setCommit = status == 'concluded' ? 'setListTasksConcluded' : status == 'open' ? 'setListTasksOpen' : 'setListTasksInterrupted'
-            this.$emit('deleteTasks', id, item, tasks)
+            this.$emit('deleteTasks', id, item)
         },
         selectColor(status, select) {
             if (status === 'open') {

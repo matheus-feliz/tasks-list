@@ -36,7 +36,7 @@ export default createStore({
             context.commit(`${item.setCommit}`, list);
           if (item.nextCommit) {
             let previousCommit = item.status =='Interrupted' ? 'setListTasksInterrupted' :item.status == 'concluded' ? 'setListTasksConcluded': '' ;
-            if(previousCommit != ''){
+            if(previousCommit != '' && list.length <= 0){
               context.commit(`${previousCommit}`,null)
             }
             item.getList = item.nextGetList;   item.setCommit = item.nextCommit;  item.nextCommit = item.nextGetList = "";

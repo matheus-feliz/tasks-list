@@ -14,7 +14,7 @@ export default ({
                     tasks.splice(i, 1);
                     this.setTask(moveTask.setTasks, tasks)
                     this.setTask(moveTask.setNexTasks, task)
-                    let commit= moveTask.status === 'concluded' ? 'setListTasksConcluded': moveTask.nextStatus === 'Interrupted'? 'setListTasksInterrupted': 'setListTasksOpen';
+                    let commit= moveTask.status === 'concluded' ? 'setListTasksConcluded': moveTask.status === 'Interrupted'? 'setListTasksInterrupted': 'setListTasksOpen';
                     let nextCommit= moveTask.nextStatus === 'concluded' ? 'setListTasksConcluded': moveTask.nextStatus === 'Interrupted'? 'setListTasksInterrupted': 'setListTasksOpen';
                     let item = {
                         getList: moveTask.setTasks ,
